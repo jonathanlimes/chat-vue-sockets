@@ -3,7 +3,7 @@
 const express = require('express')
 const http = require('http')
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 4000
 const server = http.createServer(app)
 const io = require('socket.io')(server)
 const connections = []
@@ -48,7 +48,7 @@ io.on('connection', (socket) => {
     let connection = findConnection(socket.id)
     connection.user = user
     // emit welcome message to new user
-    socket.emit('welcome', `Hi ${user.name}, welcome to Simple Chat!`)
+    socket.emit('welcome', `Hi ${user.name}, welcome to Vue Chat!`)
     // broadcast their arrival to everyone else
     socket.broadcast.emit('joined', user)
     io.sockets.emit('online', connections)

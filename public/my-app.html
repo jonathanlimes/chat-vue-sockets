@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Chat</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <div id="app" class="container">
+    <app-header :status="socketStatus"></app-header>
+    <join-message-form v-show="socketStatus" v-model="message">
+        {{ parsedMessage }}
+    </join-message-form>
+    <panel>
+      <panel-body>
+        <message v-for="x"></message>
+      </panel-body>
+    </panel>
+  </div>
+
+  <!-- Socket.io -->
+  <script src="//cdn.socket.io/socket.io-1.4.5.js"></script>
+  <!-- JQuery -->
+  <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+  <!-- main my-app js -->
+  <script src="js/my-app.js"></script>
+
+</body>
+
+</html>

@@ -1,5 +1,16 @@
-# Simple Chat App
+# Vue Chat
 
-A starter kit for building a socket.io based chat app with your frontend framwork of choice.
+A simple chat app built using Node.js, Socket.io, and Vue.js.
 
-Comes with an example client written in jQuery.
+Starter kit for the chat app is [here](https://github.com/jeremiahalex/simple-chat-app)
+
+# Live
+
+Link here
+
+# Development
+
+* [Node.js](https://nodejs.org/)
+* [Vue.js](https://vuejs.org/)
+* [Socket.io](https://socket.io/)
+* [Bootstrap](https://http://getbootstrap.com/)
