@@ -6,7 +6,7 @@ Starter kit for the chat app is [here](https://github.com/jeremiahalex/simple-ch
 
 # Live
 
-Link here
+[http://vue-group-chat.herokuapp.com/index-2.html](http://vue-group-chat.herokuapp.com/index-2.html)
 
 # Development
 
