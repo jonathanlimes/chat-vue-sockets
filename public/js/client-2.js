@@ -15,7 +15,7 @@ Vue.component('chat-title', {
   template: `
   <h1>
   <img src="https://vuejs.org/images/logo.png" height=35>
-  Vue Chat
+  <b>Vue Chat</b>
   <span id="status" v-bind:class="statusColor">
   {{status ? 'connected' : 'loading'}}
   </span>
@@ -36,14 +36,20 @@ Vue.component('join-form', {
   props: ['status'],
 
   template: `
-  <section id="join" class="well" v-bind:hidden="isNameRegistered">
-    <form id="JoinForm" class="form-inline text-right">
+  <section id="join" v-bind:hidden="isNameRegistered">
+    <form id="JoinForm" class="text-right">
+
         <fieldset>
-          <input type="text" class="form-control" v-model="inputMessage" placeholder="Your name" autocomplete="off" required autofocus />
-          <button id="sendJoin" class="btn btn-default" v-bind:disabled="!isThereAName" v-on:click.prevent="registerUserName">
-          <img src="https://vuejs.org/images/logo.png" height=20>
-          </button>
+          <div class="input-group input-group-lg">
+          <input type="text" class="form-control" v-model="inputMessage" placeholder="Enter your name" autocomplete="off" required autofocus />
+          <span class="input-group-btn">
+            <button id="sendJoin" class="btn btn-success" v-bind:disabled="!isThereAName" v-on:click.prevent="registerUserName">
+            <span class="glyphicon glyphicon-user"></span>
+            </button>
+          </span>
+          </div>
         </fieldset>
+
     </form>
   </section>
   `,
@@ -78,14 +84,16 @@ Vue.component('join-form', {
 Vue.component('chat-message', {
   props: ['message'],
   template: `
-  <div class="text-center" v-if="message.type=='info'">
+  <div class="text-center grey" v-if="message.type=='info'">
     <strong> {{ message.content }} </strong>
   </div>
   <div class="alert alert-info text-right" v-else-if="message.type=='success'">
-    <strong> {{ message.content }} </strong>
+    <b><small>You</small></b><br>
+    {{ message.content }}
   </div>
   <div class="alert alert-success" v-else-if="message.type=='alert'">
-    <strong> {{ message.content }} </strong>
+    <b><small>{{ message.user }}</small></b><br>
+    {{ message.content }}
   </div>
   `
 })
@@ -95,14 +103,19 @@ Vue.component('message-board', {
   template: `
   <main class="panel panel-success" v-show="user.name !== 'anon' ">
   <div class="panel-heading">
-    <form id="MessageForm" class="form-inline text-right">
+    <form id="MessageForm" class="text-right">
+
       <fieldset>
-        <input type="text" class="form-control" v-model="inputSentence" placeholder="Message here" autocomplete="off" required autofocus />
-        <button id="sendMessage" class="btn btn-default" v-bind:disabled="!isThereSentence"
-        v-on:click.prevent="postChatMessage">
-          <img src="https://vuejs.org/images/logo.png" height=20>
-        </button>
+        <div class="input-group input-group-lg">
+        <input type="text" class="form-control" v-model="inputSentence" placeholder="Type your message" autocomplete="off" required autofocus />
+        <span class="input-group-btn">
+          <button id="sendMessage" class="btn btn-success" v-bind:disabled="!isThereSentence" v-on:click.prevent="postChatMessage">
+          <span class="glyphicon glyphicon-send"></span>
+          </button>
+        </span>
+        </div>
       </fieldset>
+
     </form>
   </div>
 
@@ -188,7 +201,7 @@ socket.on('welcome', function (msg) {
 socket.on('chat', function (msg) {
   console.log('Received message: ', msg)
   config.messages.unshift(
-    { type: 'alert', content: msg.user.name + ': ' + msg.message }
+    { type: 'alert', user: msg.user.name, content: msg.message }
   )
 })
 
