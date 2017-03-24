@@ -1,5 +1,5 @@
 # Vue Chat
-[http://vue-group-chat.herokuapp.com/](http://vue-group-chat.herokuapp.com/index-2.html)
+[http://vue-group-chat.herokuapp.com/](http://vue-group-chat.herokuapp.com/)
 
 A simple chat app built using Node.js, Socket.io, and Vue.js.
 
