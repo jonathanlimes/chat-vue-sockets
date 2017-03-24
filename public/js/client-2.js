@@ -158,7 +158,6 @@ Vue.component('message-board', {
       console.log('Messages Array: ', config.messages)
       socket.emit('chat', msg)
 
-      // $('#messages').prepend($('<div class="alert alert-info text-right">').text(msg))
       this.inputSentence = ''
     }
   }
